@@ -1,0 +1,54 @@
+ion-tab-bar {
+  --background: #131313; /* Color de fondo del ion-tab-bar */
+  border-bottom: 1px solid #D9C8C8; /* Borde inferior de 2px de color blanco */
+}
+
+
+ion-buttons {
+  ion-button {
+    padding: 0; /* Remueve el padding extra alrededor de los botones */
+    margin: 0 8px; /* Espacio entre botones */
+
+    ion-icon {
+      font-size: 24px; /* Tamaño de los iconos */
+      color: #D9C8C8; /* Color de los iconos */
+    }
+  }
+}
+
+ion-title {
+  text-align: center; /* Alineación central del título */
+  color: #D9C8C8; /* Color del título */
+  font-weight: bold;
+}
+
+ion-button[slot="start"] ion-icon {
+  width: 28px;
+  height: 28px;
+  color: #51e5ff; /* Color del logo */
+}
+
+ion-button[slot="end"] ion-icon {
+  color: #D9C8C8; /* Color de los iconos de usuario y carrito */
+}
+// Asegura que el ion-tab-bar se muestre justo debajo del ion-header
+ion-tabs {
+  position: relative;
+  top: 0;
+  z-index: 10; // Asegura que el ion-tabs esté por encima del contenido
+}
+
+// Ajuste para que el contenido empiece debajo del ion-tab-bar
+ion-content {
+  --offset-top: 100px; // Ajusta este valor dependiendo de la altura combinada del ion-header y el ion-tab-bar
+  background-color: #131313 !important;
+
+}
+ion-tab-button {
+  background-color: #131313 !important;
+}
+
+ion-label{
+  color: #D9C8C8; /* Color de los iconos de usuario y carrito */
+
+}

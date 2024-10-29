@@ -1,0 +1,57 @@
+ion-tab-bar {
+  height: 60px; 
+  background-color: #1E1F21; 
+}
+
+ion-tab-button.tab-selected ion-label,
+ion-tab-button.tab-selected .material-icons,
+ion-tab-button.tab-selected .material-icons-outlined {
+  color: #51e5ff; 
+}
+ion-tab-button.tab-selected ion-label {
+  font-weight: bold;
+
+}
+.tabs {
+  color: #D9C8C8;
+}
+
+span.material-icons,
+span.material-icons-outlined {
+  color: #D9C8C8;
+}
+span.button-inner {
+  margin-top: 10%;
+}
+.default-icon,
+.hover-icon {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease; 
+}
+
+.default-icon {
+  opacity: 0; 
+}
+
+.hover-icon {
+  opacity: 1; 
+}
+
+ion-tab-button.tab-selected .default-icon {
+  opacity: 1; 
+}
+
+ion-tab-button.tab-selected .hover-icon {
+  opacity: 0; 
+}
+
+ion-label {
+  margin-top: 10px; /* Aumenta la separación entre el icono y el label */
+}
+
+ion-tab-button {
+  background-color: #1E1F21 !important;
+}

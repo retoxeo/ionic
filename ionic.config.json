@@ -1,0 +1,7 @@
+{
+  "name": "xeo-reto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

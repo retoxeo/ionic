@@ -1,0 +1,21 @@
+<app-shared-header></app-shared-header>
+
+
+<ion-tabs>
+  <ion-tab-bar slot="top">
+    <ion-tab-button tab="juegos" routerLink="/tabs/juegos">
+      <ion-label>Juegos</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="consolas" routerLink="/tabs/consolas">
+      <ion-label>Consolas</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="smarts" routerLink="/tabs/smarts">
+      <ion-label>Smarts</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+<ion-content [fullscreen]="true">
+  <!--CARGAR AQUI LOS TABS-->
+  <app-explore-container name="Tab 1 page"></app-explore-container>
+</ion-content>
