@@ -1,0 +1,68 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    <ion-button class="circular-button" shape="round" size="small" href="/login">
+      <span class="material-icons">arrow_back_ios</span>
+    </ion-button>
+    <div>
+      <h1 class="center-text">✍️(◔◡◔)REGÍSTRATE✍️(◔◡◔)</h1>
+      <h2 class="center-text">Crea tu cuenta</h2>
+    </div>
+    <ng-container *ngIf="step === 1">
+      <ion-item class="custom-item">
+        <ion-label class="floating">Nombre</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Primer apellido</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Segundo apellido</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Email</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">RePassword</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-button class="rounded-button" (click)="nextStep()">Siguiente</ion-button>
+    </ng-container>
+    <ng-container *ngIf="step === 2">
+      <ion-item class="custom-item">
+        <ion-label class="floating">País</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Provincia</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Código Postal</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Ciudad</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Calle</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item">
+        <ion-label class="floating">Número</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-button class="rounded-button" (click)="submitForm()">Enviar</ion-button>
+    </ng-container>
+  </div>
+</ion-content>

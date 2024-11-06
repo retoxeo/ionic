@@ -1,0 +1,25 @@
+h1 {
+    color: #D9c8c8;
+    text-align: center;
+    margin-top: 3%;
+    font-weight: bold;
+  }
+    
+
+h2 {
+    color: #D9c8c8;
+    text-align: left;
+    margin-top: 10%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+    font-size: 15px;
+}
+
+app-shared-header {
+  --background: #131313; 
+  --color: #D9C8C8; 
+}
+ion-content app-shared-header {
+  background-color: #131313; /* Cambia esto al color que debería tener */
+  color: #D9C8C8; /* Cambia esto al color del texto que debería tener */
+}

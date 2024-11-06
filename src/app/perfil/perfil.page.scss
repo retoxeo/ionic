@@ -1,0 +1,127 @@
+.circular-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .circular-button .material-icons {
+    margin-left: 50%; 
+  }
+
+  ion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh; 
+  }
+  .profile-container {
+    margin-bottom: 15%;
+    text-align: center;
+    margin-top: 26%;
+  }
+
+  .profile-container h2 {
+   color: #D9C8C8;
+  }
+  .profile-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+    }
+    
+    .profile-picture {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .top-section {
+      background-color: #131313;
+      flex: 0 0 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .bottom-section {
+      background-color: #e0e0e0;
+      flex: 0 0 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      width: 100%;
+      margin: 0;
+    }
+    
+    .edit-button {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .edit-container .edit-button {
+      --background: transparent; /* Quita el fondo */
+      --color: #333333; /* Cambia el color a uno más oscuro */
+      --box-shadow: none !important; /* Quita cualquier sombreado por defecto */
+      text-transform: none; /* Evita que el texto esté en mayúsculas */
+      display: flex;
+      align-items: center;
+    }
+
+    .edit-container div {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .edit-container h2 {
+      margin-left: 10px; /* Espacio entre el icono y el texto */
+      margin: 0; /* Elimina cualquier margen adicional */
+      font-size: 15px;
+      margin-left: 20px;
+    }
+    .xeo {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start; 
+      margin-top: 10%;
+      padding-left: 10px; 
+      margin-bottom: 4px;
+    }
+  
+    .xeo img {
+      width: 7%;
+
+    }
+    .hidden-input {
+      display: none;
+    }

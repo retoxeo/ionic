@@ -2,16 +2,26 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button routerLink="/home">
-        <ion-icon name="home-outline"></ion-icon>
+        <img src="/assets/xeo_logo.png" alt="Logo">
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button (click)="presentPopover($event)">
         <ion-icon name="person-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-popover [isOpen]="isPopoverOpen" (ionPopoverDidDismiss)="isPopoverOpen = false" class="custom-popover">
+  <ng-template>
+    <ion-list>
+      <ion-item button (click)="login($event)">Login</ion-item>
+      <ion-item button (click)="goToProfile($event)">Perfil</ion-item>
+      <ion-item button (click)="logout($event)">Cerrar sesión</ion-item>
+    </ion-list>
+  </ng-template>
+</ion-popover>

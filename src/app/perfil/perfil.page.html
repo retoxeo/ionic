@@ -1,0 +1,42 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+
+  </style>
+</head>
+<ion-content>
+  <div class="container">
+    <div class="top-section">
+      <ion-button class="circular-button" shape="round" size="small" href="/tabs">
+        <span class="material-icons">arrow_back_ios</span>
+      </ion-button>
+      <div class="profile-container">
+        <div class="profile-circle">
+          <img [src]="profilePicture" alt="Foto de perfil" class="profile-picture">
+        </div>
+        <h2>Nombre del Usuario</h2>
+        <h2>gmail</h2>
+        <h2>Direccion</h2>
+      </div>
+      <div class="xeo">
+        <img src="/assets/xeo_logo.png" alt="">
+      </div>
+    </div>
+    <div class="bottom-section">
+      <div class="edit-container">
+        <div>
+          <ion-button class="edit-button" shape="round" size="small" href="">
+            <span class="material-icons">key</span>
+            <h2>Modificar credenciales</h2>
+          </ion-button>
+        </div>
+        <div>
+          <ion-button class="edit-button" shape="round" size="small" (click)="showPhotoOptions()">
+            <span class="material-icons">add_a_photo</span>
+            <h2>Cambiar Avatar</h2>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

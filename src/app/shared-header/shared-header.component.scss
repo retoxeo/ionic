@@ -7,6 +7,18 @@ ion-toolbar {
   }
 
 ion-icon {
-    font-size: 24px; 
+    font-size: 35px; 
     color: #D9C8C8; 
+    font-weight: bold;
   }
+
+.custom-popover {
+  --min-width: 150px;
+  --max-width: 200px;
+  --offset-y: 10px; /* Ajusta la distancia vertical */
+  --offset-x: 0px; /* Ajusta la distancia horizontal */
+  right: 0; /* Alinea a la derecha */
+}
+img {
+  width: 50px;
+}

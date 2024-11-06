@@ -4,4 +4,6 @@
     <string name="title_activity_main">xeo-reto</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="google_maps_key">AIzaSyBMK-YX52RzGZCADA6fyIqQBNwwCA4OE08</string>
+
 </resources>

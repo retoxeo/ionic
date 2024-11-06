@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
@@ -10,6 +9,8 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/app/tab3/tienda_madrid/lateral-recycler-view-tienda1.component.ts",
+    "src/app/tab3/tienda_barcelona/lateral-recycler-view-tienda2.component.ts"
   ]
 }

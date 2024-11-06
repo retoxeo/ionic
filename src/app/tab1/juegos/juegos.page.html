@@ -1,6 +1,34 @@
 
-
 <ion-content>
-  <p>Aquí va el contenido de Juegos.</p>
-  <!-- Agrega más contenido específico para la página de Juegos aquí -->
+  <ion-item lines="none" class="search-filter-container">
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterJuegos()" placeholder="Buscar juegos" class="custom-searchbar"></ion-searchbar>
+    <ion-select [(ngModel)]="selectedGenero" (ionChange)="filterJuegos()" interface="popover" placeholder="Género">
+      <ion-select-option value="">Todos</ion-select-option>
+      <ion-select-option *ngFor="let genero of generos" [value]="genero.nombre">{{ genero.nombre }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Cargando datos<span class="dots"></span></p>
+  </div>
+  <div *ngIf="hasError" class="error-container">
+    <p>No se han podido cargar los datos</p>
+    <ion-button (click)="cargarVideoJuegos()">Reintentar</ion-button>
+  </div>
+  <div *ngIf="!isLoading && !hasError && filteredJuegos.length === 0" class="no-data-container">
+    <p>No se han encontrado datos ⚠</p>
+    <ion-button (click)="cargarVideoJuegos()">Reintentar</ion-button>
+  </div>
+  <ion-grid *ngIf="!isLoading && !hasError && filteredJuegos.length > 0">
+    <ion-row>
+      <ion-col size="6" *ngFor="let juego of filteredJuegos">
+        <ion-card>
+          <img [src]="juego.fotos[0]" alt="{{ juego.nombre }}">
+          <ion-card-header>
+            <ion-card-title>{{ juego.nombre }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

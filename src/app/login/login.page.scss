@@ -1,0 +1,126 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #131313;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  .center-text {
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  h1 {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    color: #ffffff;
+    max-width: 100%;
+    text-align: center;
+    font-size: 5vw; /* Ajusta el tamaño del h1 según el ancho de la ventana */
+    
+  }
+
+  h2 {
+    margin-top: -110%;
+    margin-bottom: 20px;
+    color: #aaaaaa;
+    text-align: center;
+    font-size: 3vw;
+  }
+
+  ion-item {
+    width: 100%;
+    margin: 10px 0;
+    --background: #2e2e2e;
+    --border-radius: 10px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.6), /* Sombra interna para efecto hundido */
+      inset 0 -2px 4px rgba(0, 0, 0, 0.4); /* Sombra interna adicional para mayor profundidad */
+  }
+ion-label.floating {
+  position: absolute;
+  top: -10px; /* Ajusta este valor según sea necesario */
+  left: 10px; /* Ajusta este valor según sea necesario */
+  font-size: 18px; /* Tamaño del texto del label aumentado */
+  color: gray; /* Cambia el color si es necesario */
+  transition: all 0.2s; /* Para una transición suave */
+}
+  
+
+  ion-input {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    color: #ffffff;
+    margin-top: 5%;
+  }
+
+#login {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 25px; // Redondeado
+  --background: #007BFF;
+  --background-hover: #0056b3;
+  --background-activated: #004494;
+  --color: #ffffff;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.8), /* Sombra interna más intensa para efecto hundido */
+    inset 0 -4px 8px rgba(0, 0, 0, 0.6); /* Sombra interna adicional para mayor profundidad */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Transición suave
+
+  &:hover {
+    box-shadow: 
+      inset 0 4px 8px rgba(0, 0, 0, 0.8), /* Sombra interna más intensa para efecto hundido */
+      inset 0 -4px 8px rgba(0, 0, 0, 0.6), /* Sombra interna adicional para mayor profundidad */
+      0 6px 8px rgba(0, 0, 0, 0.15); // Sombra al pasar el ratón
+  }
+
+  &:active {
+    box-shadow: 
+      inset 0 4px 8px rgba(0, 0, 0, 0.8), /* Sombra interna más intensa para efecto hundido */
+      inset 0 -4px 8px rgba(0, 0, 0, 0.6), /* Sombra interna adicional para mayor profundidad */
+      0 2px 4px rgba(0, 0, 0, 0.2); // Sombra al hacer clic
+  }
+}
+
+  ion-text {
+    width: 100%;
+    text-align: right;
+    margin-top: 10px;
+    color: #ffffff;
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+  }
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .circular-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    width: 40px; /* Ajusta el tamaño según sea necesario */
+    height: 40px; /* Ajusta el tamaño según sea necesario */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .circular-button .material-icons {
+    margin-left: 50%; /* Ajusta el tamaño del icono según sea necesario */
+  }
+

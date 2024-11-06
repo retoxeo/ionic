@@ -1,38 +1,28 @@
 ion-tab-bar {
   --background: #131313; /* Color de fondo del ion-tab-bar */
-  border-bottom: 1px solid #D9C8C8; /* Borde inferior de 2px de color blanco */
+  border-bottom: 0.1px solid #D9C8C8; /* Borde inferior de 2px de color blanco */
 }
 
 ion-tab-button {
   position: relative;
-}
+  overflow: hidden;
 
-ion-tab-button {
   &.tab-selected {
     ion-label {
       color: #51e5ff; /* Cambia el color del texto a azul cuando está seleccionado */
       font-weight: bold;
     }
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 33%; /* Ajusta este valor para cambiar el ancho de la línea */
-      height: 3px; /* Altura de la línea */
-      background-color: #51e5ff; /* Color de la línea */
-      border-radius: 10px 10px 0 0; /* Redondea los bordes superiores */
-      transition: left 0.3s ease; /* Tiempo de la animación */
-    }
   }
 }
 
-ion-tab-button.tab-selected::after {
-  left: 50%; 
-  transform: translateX(-50%);
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: 20%; /* Ajusta este valor para cambiar el ancho de la línea */
+  background-color: #51e5ff;
+  border-radius: 10px 10px 0 0; /* Redondea los bordes superiores */
+  transition: left 0.3s ease, width 0.3s ease;
 }
 
 ion-buttons {
@@ -62,7 +52,7 @@ ion-button[slot="start"] ion-icon {
 ion-button[slot="end"] ion-icon {
   color: #D9C8C8; /* Color de los iconos de usuario y carrito */
 }
-// Asegura que el ion-tab-bar se muestre justo debajo del ion-header
+
 ion-tabs {
   position: relative;
   top: 0;

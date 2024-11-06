@@ -1,12 +1,14 @@
 <app-shared-header></app-shared-header>
 
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1>Fotos de las tiendas</h1>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <h2>Tienda Bilbao</h2>
+  <app-lateral-recycler-view></app-lateral-recycler-view>
+
+  <h2>Tienda Madrid</h2>
+  <app-lateral-recycler-view-tienda1></app-lateral-recycler-view-tienda1>
+
+  <h2>Tienda Barcelona</h2>
+  <app-lateral-recycler-view-tienda2></app-lateral-recycler-view-tienda2>
 </ion-content>
