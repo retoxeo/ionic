@@ -27,6 +27,7 @@ export class JuegosPage implements OnInit {
   cargarVideoJuegos() {
     this.isLoading = true;
     this.hasError = false;
+    this.selectedGenero = ''; // Restablece el select a la opción por defecto "Todos"
     console.log('Cargando videojuegos...');
     this.xeoService.getVideojuegos().subscribe(
       (data: Videojuego[]) => {
@@ -35,6 +36,7 @@ export class JuegosPage implements OnInit {
         this.filteredJuegos = data;
         this.isLoading = false; // Datos cargados, desactivar el estado de carga
         this.hasError = false; // Reiniciar el estado de error
+        this.filterJuegos(); // Filtra los juegos después de cargar los datos
       },
       (error) => {
         console.error('Error al cargar videojuegos:', error);
@@ -61,5 +63,22 @@ export class JuegosPage implements OnInit {
       juego.nombre.toLowerCase().includes(searchTermLower) &&
       (this.selectedGenero === '' || juego.generos.some(genero => genero.nombre === this.selectedGenero))
     );
+  }
+
+    cambiarUrlImagen(url: string): string {
+    if (url.startsWith('http://')) {
+      return url.replace('http://', 'https://');
+    }
+    return url;
+  }
+    doRefresh(event: any) {
+    console.log('Begin async operation');
+    this.cargarVideoJuegos();
+    this.cargarGeneros();
+  
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 }

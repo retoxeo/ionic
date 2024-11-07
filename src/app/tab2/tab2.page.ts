@@ -14,6 +14,7 @@ export class Tab2Page {
 
   map: any;
   userMarker: any;
+  locationError: boolean = false;
 
   async ionViewDidEnter() {
     await this.loadMap();
@@ -21,57 +22,60 @@ export class Tab2Page {
 
   async loadMap() {
     try {
-      // Configura las opciones de Geolocation para alta precisión
       const options: PositionOptions = {
         enableHighAccuracy: true,
         timeout: 10000,
         maximumAge: 0
       };
 
-      // Obtiene la ubicación actual con alta precisión
       const coordinates = await Geolocation.getCurrentPosition(options);
       const latLng = {
         lat: coordinates.coords.latitude,
         lng: coordinates.coords.longitude,
       };
 
-      // Verifica si Google Maps está disponible
-      if (typeof google !== 'undefined') {
-        // Inicializa el mapa
-        this.map = new google.maps.Map(this.mapElement.nativeElement, {
-          center: latLng,
-          zoom: 15,
-          disableDefaultUI: true, // Desactiva la UI por defecto para mejorar el rendimiento
-        });
-
-        // Añade un marcador en la ubicación actual con un icono personalizado
-        this.userMarker = new google.maps.Marker({
-          position: latLng,
-          map: this.map,
-          title: 'Tu ubicación',
-          icon: {
-            url: '/assets/map_azul.png', // Ruta al icono personalizado
-            scaledSize: new google.maps.Size(40, 40) // Ajusta el tamaño del icono
-          }
-        });
-
-        // Añade marcadores adicionales
-        const locations = [
-          { lat: 40.416775, lng: -3.703790, nombre: 'Tienda Madrid (PROXIMA APERTURA)' },
-          { lat: 41.385064, lng: 2.173404, nombre: 'Tienda Barcelona (PROXIMA APERTURA)' },
-          { lat: 43.263012, lng: -2.934985, nombre: 'Tienda Bilbao (PROXIMA APERTURA)' },
-        ];
-
-        locations.forEach(location => {
-          new google.maps.Marker({
-            position: { lat: location.lat, lng: location.lng },
-            map: this.map,
-            title: location.nombre,
-          });
-        });
-      }
+      this.initializeMap(latLng);
+      this.locationError = false;
     } catch (error) {
       console.log('Error getting location', error);
+      this.locationError = true;
+      // Usa una ubicación predeterminada si no se puede obtener la ubicación actual
+      const defaultLatLng = { lat: 40.416775, lng: -3.703790 }; // Madrid, España
+      this.initializeMap(defaultLatLng);
+    }
+  }
+
+  initializeMap(latLng: { lat: number, lng: number }) {
+    if (typeof google !== 'undefined') {
+      this.map = new google.maps.Map(this.mapElement.nativeElement, {
+        center: latLng,
+        zoom: 15,
+        disableDefaultUI: true,
+      });
+
+      this.userMarker = new google.maps.Marker({
+        position: latLng,
+        map: this.map,
+        title: 'Tu ubicación',
+        icon: {
+          url: '/assets/map_azul.png',
+          scaledSize: new google.maps.Size(40, 40)
+        }
+      });
+
+      const locations = [
+        { lat: 40.416775, lng: -3.703790, nombre: 'Tienda Madrid (PROXIMA APERTURA)' },
+        { lat: 41.385064, lng: 2.173404, nombre: 'Tienda Barcelona (PROXIMA APERTURA)' },
+        { lat: 43.263012, lng: -2.934985, nombre: 'Tienda Bilbao (PROXIMA APERTURA)' },
+      ];
+
+      locations.forEach(location => {
+        new google.maps.Marker({
+          position: { lat: location.lat, lng: location.lng },
+          map: this.map,
+          title: location.nombre,
+        });
+      });
     }
   }
 
@@ -97,15 +101,17 @@ export class Tab2Page {
           map: this.map,
           title: 'Tu ubicación',
           icon: {
-            url: '/assets/map_azul.png', // Ruta al icono personalizado
-            scaledSize: new google.maps.Size(40, 40) // Ajusta el tamaño del icono
+            url: '/assets/map_azul.png',
+            scaledSize: new google.maps.Size(40, 40)
           }
         });
       }
 
       this.map.setCenter(latLng);
+      this.locationError = false;
     } catch (error) {
       console.log('Error getting location', error);
+      this.locationError = true;
       if (this.userMarker) {
         this.userMarker.setMap(null);
         this.userMarker = null;

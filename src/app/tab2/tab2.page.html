@@ -2,7 +2,10 @@
 
 <ion-content [fullscreen]="true">
   <h1>Tiendas Cercanas</h1>
-  <div #map style="height: calc(100% - 56px);"></div> <!-- Ajusta 56px según la altura de tus tabs inferiores -->
+  <div *ngIf="!locationError" #map style="height: calc(100% - 56px);"></div> <!-- Ajusta 56px según la altura de tus tabs inferiores -->
+  <div *ngIf="locationError" class="error-message">
+    Por favor, activa la ubicación para ver el mapa.
+  </div>
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button (click)="moveToCurrentLocation()">
       <ion-icon name="locate"></ion-icon>

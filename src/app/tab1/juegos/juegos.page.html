@@ -1,13 +1,14 @@
-
 <ion-content>
-  <ion-item lines="none" class="search-filter-container">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="search-filter-container">
     <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterJuegos()" placeholder="Buscar juegos" class="custom-searchbar"></ion-searchbar>
     <ion-select [(ngModel)]="selectedGenero" (ionChange)="filterJuegos()" interface="popover" placeholder="Género">
       <ion-select-option value="">Todos</ion-select-option>
       <ion-select-option *ngFor="let genero of generos" [value]="genero.nombre">{{ genero.nombre }}</ion-select-option>
     </ion-select>
-  </ion-item>
-  
+  </div>
   <div *ngIf="isLoading" class="loading-container">
     <p>Cargando datos<span class="dots"></span></p>
   </div>
@@ -23,7 +24,7 @@
     <ion-row>
       <ion-col size="6" *ngFor="let juego of filteredJuegos">
         <ion-card>
-          <img [src]="juego.fotos[0]" alt="{{ juego.nombre }}">
+          <img [src]="cambiarUrlImagen(juego.fotos[0])" alt="{{ juego.nombre }}">
           <ion-card-header>
             <ion-card-title>{{ juego.nombre }}</ion-card-title>
           </ion-card-header>

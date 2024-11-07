@@ -11,3 +11,15 @@ h1 {
 
 }
 
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 56px); // Ajusta 56px según la altura de tus tabs inferiores
+  color: #fff;
+  background-color: #ff4d4d;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
