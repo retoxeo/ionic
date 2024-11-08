@@ -1,6 +1,10 @@
 <app-shared-header></app-shared-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" *ngIf="!isMapLoaded">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <h1>Tiendas Cercanas</h1>
   <div *ngIf="!locationError" #map style="height: calc(100% - 56px);"></div> <!-- Ajusta 56px según la altura de tus tabs inferiores -->
   <div *ngIf="locationError" class="error-message">

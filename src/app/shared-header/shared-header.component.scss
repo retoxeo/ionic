@@ -22,3 +22,27 @@ ion-icon {
 img {
   width: 50px;
 }
+
+ion-menu.custom-menu {
+  --background: #1e1f217e; // Fondo del menú completo
+
+  ion-item {
+    --background: transparent; // Fondo de los items
+    --ion-item-background: transparent; // Asegúrate de incluir este también
+    color: #D9C8C8; // Color del texto del item si es necesario
+
+    // Puedes estilizar el wrapper del input si contiene un input dentro
+    .input-wrapper {
+      background: transparent;
+    }
+  }
+
+  ion-content {
+    --background: #1e1f217e; // Fondo del contenido del menú
+  }
+
+  // Opcionalmente, apunta a las clases internas si no está funcionando aún
+  .list-md, .item-md {
+    background: transparent !important;
+  }
+}

@@ -15,6 +15,7 @@ export class Tab2Page {
   map: any;
   userMarker: any;
   locationError: boolean = false;
+  isMapLoaded: boolean = false;
 
   async ionViewDidEnter() {
     await this.loadMap();
@@ -36,9 +37,11 @@ export class Tab2Page {
 
       this.initializeMap(latLng);
       this.locationError = false;
+      this.isMapLoaded = true;
     } catch (error) {
       console.log('Error getting location', error);
       this.locationError = true;
+      this.isMapLoaded = false;
       // Usa una ubicación predeterminada si no se puede obtener la ubicación actual
       const defaultLatLng = { lat: 40.416775, lng: -3.703790 }; // Madrid, España
       this.initializeMap(defaultLatLng);
@@ -86,13 +89,13 @@ export class Tab2Page {
         timeout: 10000,
         maximumAge: 0
       };
-
+  
       const coordinates = await Geolocation.getCurrentPosition(options);
       const latLng = {
         lat: coordinates.coords.latitude,
         lng: coordinates.coords.longitude,
       };
-
+  
       if (this.userMarker) {
         this.userMarker.setPosition(latLng);
       } else {
@@ -106,16 +109,30 @@ export class Tab2Page {
           }
         });
       }
-
+  
       this.map.setCenter(latLng);
+      this.map.setZoom(18); 
       this.locationError = false;
+      this.isMapLoaded = true;
     } catch (error) {
       console.log('Error getting location', error);
       this.locationError = true;
+      this.isMapLoaded = false;
       if (this.userMarker) {
         this.userMarker.setMap(null);
         this.userMarker = null;
       }
     }
+  }
+
+  doRefresh(event: any) {
+    this.loadMap().then(() => {
+      event.target.complete();
+    });
+    
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 }

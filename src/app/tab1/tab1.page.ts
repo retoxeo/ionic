@@ -1,15 +1,24 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { TabBarService } from '../servicios/tab-bar.service';  // Importar el servicio
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
   @ViewChild('tabIndicator', { static: false }) tabIndicator!: ElementRef;
+  tabBarVisible: boolean = true;  // Nueva propiedad para controlar la visibilidad de la tab-bar
 
-  constructor() {}
-  
+  constructor(private tabBarService: TabBarService) {}
+
+  ngOnInit() {
+    // Nos suscribimos al observable para controlar la visibilidad de la tab-bar
+    this.tabBarService.tabBarVisible$.subscribe((visible) => {
+      this.tabBarVisible = visible;
+    });
+  }
+
   onTabChange(event: any) {
     const selectedTab = event.tab;
     const tabButtons = document.querySelectorAll('ion-tab-button');
