@@ -11,4 +11,4 @@ import { SharedHeaderComponent } from './shared-header.component';
   ],
   exports: [SharedHeaderComponent]
 })
-export class SharedHeaderModule { }
+export class SharedHeaderModule {}

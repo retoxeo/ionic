@@ -20,6 +20,37 @@ export class JuegosPage implements OnInit {
   hasError: boolean = false;
   selectedJuego: Videojuego | null = null;
 
+
+    // Juegos de ejemplo
+    ejemploJuegos: Videojuego[] = [
+      {
+        id_producto: 1,
+        id_videojuego: 1,
+        nombre: 'Juego de ejemplo 1',
+        descripcion: 'Descripción del juego de ejemplo 1',
+        precio: 100,
+        precio_alquiler: 50,
+        pegi: 12,
+        fecha_lanzamiento: new Date().toISOString(),
+        desarrollador: 'Desarrollador de ejemplo',
+        fotos: ['ruta/a/imagen1.jpg'],
+        generos: [{ id: 1, nombre: 'Acción' }]
+      },
+      {
+        id_producto: 2,
+        id_videojuego: 2,
+        nombre: 'Juego de ejemplo 2',
+        descripcion: 'Descripción del juego de ejemplo 2',
+        precio: 20,
+        precio_alquiler: 50,
+        pegi: 12,
+        fecha_lanzamiento: new Date().toISOString(),
+        desarrollador: 'Desarrollador de ejemplo',
+        fotos: ['ruta/a/imagen2.jpg'],
+        generos: [{ id: 2, nombre: 'Aventura' }]
+      }
+    ];
+
   constructor(private xeoService: XeoService, private tabBarService: TabBarService, private carritoService: CarritoService) {}
 
   ngOnInit() {
@@ -86,25 +117,29 @@ export class JuegosPage implements OnInit {
     }, 2000);
   }
 
+  verDetalles(juego: Videojuego) {
+    console.log('Juego seleccionado:', juego);
+    this.selectedJuego = juego;
 
-verDetalles(juego: Videojuego) {
-  console.log('Juego seleccionado:', juego);
-  this.selectedJuego = juego;
+    // Llamar al servicio para ocultar la tab-bar
+    this.tabBarService.hideTabBar();
+  }
 
-  // Llamar al servicio para ocultar la tab-bar
-  this.tabBarService.hideTabBar();
-}
+  cerrarDetalles() {
+    this.selectedJuego = null;
+    this.tabBarService.showTabBar(); 
 
-cerrarDetalles() {
-  this.selectedJuego = null;
-  this.tabBarService.showTabBar(); 
-}
+    // Forzar actualización de la barra de tabs
+    setTimeout(() => {
+      this.tabBarService.updateTabBar();
+    }, 100);
+  }
 
-comprarJuego(juego: any) {
-  this.carritoService.addItem({
-    nombre: juego.nombre,
-    precio: juego.precio
-  });
-}
+  comprarJuego(juego: Videojuego) {
+    this.carritoService.addItem(juego, 'compra');
+  }
 
+  alquilarJuego(juego: Videojuego) {
+    this.carritoService.addItem(juego, 'alquiler');
+  }
 }

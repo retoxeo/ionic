@@ -3,12 +3,11 @@
 <ion-content [fullscreen]="true">
   <h1>Fotos de las tiendas</h1>
 
-  <h2>Tienda Bilbao</h2>
-  <app-lateral-recycler-view></app-lateral-recycler-view>
+  <div *ngFor="let tienda of tiendas">
+    <h2>{{ tienda.ciudad }}</h2>
+    <app-lateral-recycler-view [fotos]="tienda.fotos"></app-lateral-recycler-view>
 
-  <h2>Tienda Madrid</h2>
-  <app-lateral-recycler-view-tienda1></app-lateral-recycler-view-tienda1>
 
-  <h2>Tienda Barcelona</h2>
-  <app-lateral-recycler-view-tienda2></app-lateral-recycler-view-tienda2>
+  </div>
+
 </ion-content>

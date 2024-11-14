@@ -36,5 +36,10 @@ export class Tab1Page implements OnInit {
         indicator.style.width = `${labelRect.width}px`; // Ajusta el ancho del indicador al ancho del texto
       }
     }
+
+    // Forzar actualización de la barra de tabs
+    setTimeout(() => {
+      this.tabBarService.updateTabBar();
+    }, 100);
   }
 }

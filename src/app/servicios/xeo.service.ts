@@ -18,4 +18,16 @@ export class XeoService {
   getGeneros(): Observable<Genero[]> {
     return this.http.get<Genero[]>(this.url + 'generos');
   }
+
+  getConsolas(): Observable<any[]> {
+    return this.http.get<any[]>(this.url + 'consolas');
+  }
+
+  getSmarts(): Observable<any[]> {
+    return this.http.get<any[]>(this.url + 'dispositivos_movil');
+  }
+
+  getTiendas(): Observable<any[]> {
+    return this.http.get<any[]>(this.url + 'tiendas');
+  }
 }

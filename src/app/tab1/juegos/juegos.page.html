@@ -16,16 +16,32 @@
       <p>Cargando datos<span class="dots"></span></p>
     </div>
 
-    <div *ngIf="hasError" class="error-container">
+    <!-- <div *ngIf="hasError" class="error-container">
       <p>No se han podido cargar los datos</p>
       <ion-button (click)="cargarVideoJuegos()">Reintentar</ion-button>
-    </div>
+    </div> -->
 
     <div *ngIf="!isLoading && !hasError && filteredJuegos.length === 0" class="no-data-container">
       <p>No se han encontrado datos ⚠</p>
       <ion-button (click)="cargarVideoJuegos()">Reintentar</ion-button>
     </div>
 
+    <div *ngIf="hasError">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let juego of ejemploJuegos">
+            <ion-card (click)="verDetalles(juego)">
+              <img [src]="cambiarUrlImagen(juego.fotos[0])" alt="{{ juego.nombre }}">
+              <ion-card-header>
+                <ion-card-title>{{ juego.nombre }}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    
+    
     <ion-grid *ngIf="!isLoading && !hasError && filteredJuegos.length > 0">
       <ion-row>
         <ion-col size="6" *ngFor="let juego of filteredJuegos">
@@ -58,16 +74,15 @@
       <span class="material-icons">arrow_back_ios</span>
     </ion-button>
     
-         <!-- Botones para comprar y alquilar -->
-        <div class="button-group">
-          <ion-button (click)="comprarJuego(selectedJuego)" class="" shape="round" size="small">
-            Comprar
-          </ion-button>
-          <ion-button class="" shape="round" size="small">
-            Alquilar
-          </ion-button>
-        </div>
-    
+    <!-- Botones para comprar y alquilar -->
+    <div class="button-group">
+      <ion-button (click)="comprarJuego(selectedJuego)" class="" shape="round" size="small">
+        Comprar
+      </ion-button>
+      <ion-button (click)="alquilarJuego(selectedJuego)" class="" shape="round" size="small">
+        Alquilar
+      </ion-button>
+    </div>
   </div>
   
 </ion-content>

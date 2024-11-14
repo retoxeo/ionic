@@ -36,10 +36,42 @@
   <ion-content>
     <!-- Contenido del carrito -->
     <ion-list>
-      <ion-item *ngFor="let item of cartItems">
-        <ion-label>{{ item.nombre }} - {{ item.precio }}</ion-label>
-      </ion-item>
+      <ion-item-divider color="light">
+        Compras
+        <ion-label slot="end" class="end-label">Cantidad</ion-label>
+      </ion-item-divider>
+      <ng-container *ngFor="let cartItem of cartItems">
+        <ion-item *ngIf="cartItem.type === 'compra'">
+          <ion-label>{{ cartItem.item.nombre }} - {{ cartItem.item.precio | currency:'EUR' }}</ion-label>
+          <ion-button (click)="decreaseQuantity(cartItem.item, 'compra')" fill="clear" size="small">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-badge>{{ cartItem.quantity }}</ion-badge>
+          <ion-button (click)="increaseQuantity(cartItem.item, 'compra')" fill="clear" size="small">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ng-container>
+      <ion-item-divider color="light">
+        Alquileres
+        <ion-label slot="end" class="end-label">Semanas</ion-label>
+      </ion-item-divider>
+      <ng-container *ngFor="let cartItem of cartItems">
+        <ion-item *ngIf="cartItem.type === 'alquiler'">
+          <ion-label>{{ cartItem.item.nombre }} - {{ cartItem.item.precio_alquiler | currency:'EUR' }}</ion-label>
+          <ion-button (click)="decreaseQuantity(cartItem.item, 'alquiler')" fill="clear" size="small">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-badge>{{ cartItem.quantity }}</ion-badge>
+          <ion-button (click)="increaseQuantity(cartItem.item, 'alquiler')" fill="clear" size="small">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ng-container>
     </ion-list>
+    <ion-item>
+      <ion-label>Total: {{ total | currency:'EUR' }}</ion-label>
+    </ion-item>
   </ion-content>
 </ion-menu>
 

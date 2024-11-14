@@ -15,11 +15,12 @@ h2 {
     font-size: 15px;
 }
 
-app-shared-header {
-  --background: #131313; 
-  --color: #D9C8C8; 
+ion-slides {
+  height: 200px;
 }
-ion-content app-shared-header {
-  background-color: #131313; /* Cambia esto al color que debería tener */
-  color: #D9C8C8; /* Cambia esto al color del texto que debería tener */
+
+ion-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

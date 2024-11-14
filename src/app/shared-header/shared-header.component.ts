@@ -11,8 +11,9 @@ import { CarritoService } from '../servicios/carrito.service';
 })
 export class SharedHeaderComponent implements OnInit {
   isPopoverOpen = false;
-  cartItems: any[] = [];
+  cartItems: { item: any, quantity: number, type: 'compra' | 'alquiler' }[] = [];
   itemCount: number = 0;
+  total: number = 0;
 
   constructor(
     private popoverController: PopoverController, 
@@ -22,7 +23,12 @@ export class SharedHeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.updateItemCount();
+    this.carritoService.getItemCount().subscribe(count => {
+      this.itemCount = count;
+    });
+  
+    this.cartItems = this.carritoService.getItems();
+    this.updateTotal();
   }
 
   async presentPopover(ev: Event) {
@@ -36,12 +42,12 @@ export class SharedHeaderComponent implements OnInit {
 
     popover.onDidDismiss().then((result) => {
       if (result.data) {
-        this.handlePopoverSelection(result.data);
+        // Manejar el resultado del popover aquí
       }
       this.isPopoverOpen = false;
     });
 
-    this.isPopoverOpen = false;
+    this.isPopoverOpen = true;
     await popover.present();
   }
 
@@ -52,13 +58,13 @@ export class SharedHeaderComponent implements OnInit {
     }
     switch (option) {
       case 'login':
-        this.router.navigate(['/login']);
-        break;
-      case 'perfil':
-        this.router.navigate(['/perfil']);
+        // Manejar la opción de login aquí
         break;
       case 'logout':
-        this.router.navigate(['/logout']);
+        // Manejar la opción de logout aquí
+        break;
+      case 'perfil':
+        // Manejar la opción de perfil aquí
         break;
     }
   }
@@ -77,10 +83,29 @@ export class SharedHeaderComponent implements OnInit {
 
   openCartMenu() {
     this.cartItems = this.carritoService.getItems();
+    this.updateTotal();
     this.menu.open('cartMenu');
   }
 
   updateItemCount() {
-    this.itemCount = this.carritoService.getItemCount();
+    this.carritoService.getItemCount().subscribe(count => {
+      this.itemCount = count;
+    });
+  }
+
+  increaseQuantity(item: any, type: 'compra' | 'alquiler') {
+    this.carritoService.addItem(item, type);
+    this.cartItems = this.carritoService.getItems();
+    this.updateTotal();
+  }
+
+  decreaseQuantity(item: any, type: 'compra' | 'alquiler') {
+    this.carritoService.removeItem(item, type);
+    this.cartItems = this.carritoService.getItems();
+    this.updateTotal();
+  }
+
+  updateTotal() {
+    this.total = this.carritoService.getTotal();
   }
 }
